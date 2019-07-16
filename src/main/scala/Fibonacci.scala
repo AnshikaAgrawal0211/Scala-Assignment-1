@@ -1,19 +1,17 @@
-class Fibonacci {
-  def NFibonacci(): Unit = {
-    println("enter the number")
-    val number = scala.io.StdIn.readInt()
+import scala.annotation.tailrec
 
-    var first = 0
-    var second = 1
-    if (number == 1) println("0")
-    if (number == 2) println("1")
-    if (number > 2) {
-      for (nth <- 1 to number - 1) {
-        var nth = first + second
-        first = second
-        second = nth
+class Fibonacci {
+
+  def NFibonacci(elementIndex : Int) = {
+@tailrec
+    def findElement(currentIndex : Int, prev : Int = 0, next : Int = 1) : Int =
+    {
+      currentIndex match {
+        case 0 => prev
+        case 1 => next
+        case _ => findElement(currentIndex -1, next, prev + next)
       }
-      println(s"$second")
     }
+    println(findElement(elementIndex))
   }
 }

@@ -1,22 +1,24 @@
-class ProductSum {
-  def FindProductSum(): Unit = {
-    println("enter the number")
-    val number = scala.io.StdIn.readInt()
-    var product = 1
-    if (number > 1)
-      for (i <- 1 to number)
-        product = product * i
-    println(s"$product")
-    if (number == 1)
-      println("1")
-    var sum = 0
-    var digit = 0
-    while (product > 0) {
-      digit = product % 10
-      sum = sum + digit
-      product /= 10
-    }
-    println(s"$sum")
-  }
+import scala.annotation.tailrec
 
+class ProductSum {
+  def FindProductSum(number:Int): Unit = {
+    @tailrec
+    def product(number:Int,multiply:Int=1):Int={
+      number match{
+        case 0 => multiply
+        case 1 => multiply
+        case _ => product(number-1,multiply*number)
+      }
+    }
+    @tailrec
+    def sum(digit:Int=0,currentSum:Int=0,productOutput:Int=product(number)):Int= {
+      if(productOutput > 0)
+         sum(productOutput % 10, currentSum + digit, productOutput / 10)
+      else
+        currentSum+ digit
+    }
+    println(product(number))
+    println(sum())
+
+  }
 }

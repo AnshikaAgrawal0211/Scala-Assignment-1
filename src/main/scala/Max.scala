@@ -1,14 +1,17 @@
+
+
 class Max {
-  def FindMax(): Unit={
-    val list:List[Int]= List(2,3,4,19)
-    var max=list(0)
-    for(current<-0 to list.length-1)
-      {
-        if(list(current)>max)
-          max=list(current)
-      }
-    println(s"$max")
+  val list: List[Int] = List(2, 3, 4, 19)
+
+  def findMax(currentMax: Int = list.head, nextList: List[Int] = list.tail): Int = {
+    if ((nextList.head::Nil)==true)
+      currentMax
+    else if (currentMax > nextList.head )
+      findMax(nextList.head, nextList.tail)
+    else
+      findMax(currentMax, nextList.tail)
+
   }
 
-
+  println(findMax())
 }

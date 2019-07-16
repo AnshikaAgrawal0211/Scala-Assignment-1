@@ -9,14 +9,13 @@ object Main extends App {
 
   choice match {
     case 1 => val interpolation = new Interpolation
-      interpolation.printList(3)
+      interpolation.findList()
     case 2 => val max = new Max
-      max.FindMax()
+      max.findMax()
     case 3 => val fibonacci = new Fibonacci
-      fibonacci.NFibonacci()
-    case 4 => val productsum = new ProductSum
-      productsum.FindProductSum()
-
+      fibonacci.NFibonacci(4)
+    case 4 => val productSum = new ProductSum
+      productSum.FindProductSum(5)
     case _ => println("Invalid choice")
   }
 }

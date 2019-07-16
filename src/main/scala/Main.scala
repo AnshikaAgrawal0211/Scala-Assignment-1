@@ -11,7 +11,7 @@ object Main extends App {
     case 1 => val interpolation = new Interpolation
       interpolation.findList()
     case 2 => val max = new Max
-      max.findMax()
+      max.checkMax()
     case 3 => val fibonacci = new Fibonacci
       fibonacci.NFibonacci(4)
     case 4 => val productSum = new ProductSum

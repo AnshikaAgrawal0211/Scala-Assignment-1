@@ -1,20 +1,14 @@
 
+val list= List[Int](2, 3, 4, 19,3,1)
+ def findMax(currentMax: Int = list.head, nextList: List[Int] = list.tail): Int = {
+      currentMax match {
+        case _ if (nextList.length == 0) =>currentMax
+       case _ if (currentMax < nextList.head) => findMax(nextList.head, nextList.tail)
 
-def printList(number: Int=3): Unit = {
-  val list: List[Int] = List(10, 20, 30, 40)
-  if (number < list.length) {
-    def findList(index: Int = 0): Unit = {
-
-      val LastIndex = list.length - 1
-      index match {
-        case LastIndex => println(s"$index=${list(index)}")
-        case _ => {
-          println(s"$index=${list(index)}")
-          findList(index + 1)
-        }
+        case _ => findMax(currentMax, nextList.tail)
       }
+    }
 
-      findList(0) }
-  }
-  else println(s"number exceeds the limit")
-}
+
+
+println(findMax())
